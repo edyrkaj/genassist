@@ -16,12 +16,15 @@ services:
 
   # Main application service
   app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: genassist-app
-    image: ghcr.io/ritechsolutions/genassist-backend:latest
-    env_file:
-      - .env.backend
+    image: genassist-app-image 
     ports:
       - "8000:8000"
+    env_file:
+      - .env.backend
     environment:
       - RAG_VECTOR_DB_TYPE=chroma
       - RAG_CHROMA_PERSIST_DIRECTORY=/app/data/chroma
@@ -41,7 +44,9 @@ services:
 
   # UI service
   ui:
-    image: ghcr.io/ritechsolutions/genassist-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: genassist-ui
     ports:
       - "8080:8080"
@@ -118,7 +123,7 @@ services:
 
   # Celery worker
   celery_worker:
-    image: ghcr.io/ritechsolutions/genassist-backend:latest
+    image: genassist-app-image 
     container_name: genassist-celery-worker
     command: celery -A app.tasks.celery_app worker --loglevel=info
     env_file:
@@ -134,7 +139,7 @@ services:
 
   # Celery beat for periodic tasks
   celery_beat:
-    image: ghcr.io/ritechsolutions/genassist-backend:latest
+    image: genassist-app-image 
     container_name: genassist-celery-beat
     command: celery -A app.tasks.celery_app beat --loglevel=info
     env_file:
@@ -150,7 +155,7 @@ services:
 
   # Flower for monitoring
   flower:
-    image: ghcr.io/ritechsolutions/genassist-backend:latest
+    image: genassist-app-image 
     container_name: genassist-flower
     command: celery -A app.tasks.celery_app flower --port=5555 --persistent=True --db="flower_db" --basic-auth="user1:password1"
     ports:
