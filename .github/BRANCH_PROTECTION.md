@@ -6,7 +6,7 @@ This document outlines the branch protection rules that should be configured in 
 
 GenAssist uses the **GitFlow** branching strategy with the following branch types:
 - `main` - Production-ready code
-- `develop` - Integration branch for features
+- `development` - Integration branch for features
 - `feature/*` - Feature development branches
 - `release/*` - Release preparation branches
 - `hotfix/*` - Critical production fixes
@@ -61,9 +61,9 @@ GenAssist uses the **GitFlow** branching strategy with the following branch type
 11. **Do not allow deletions**
     - ✅ Enable
 
-### Develop Branch Protection
+### development Branch Protection
 
-**Location**: GitHub Settings → Branches → Add rule → Branch name pattern: `develop`
+**Location**: GitHub Settings → Branches → Add rule → Branch name pattern: `development`
 
 #### Required Settings:
 
@@ -91,14 +91,14 @@ GenAssist uses the **GitFlow** branching strategy with the following branch type
 **Branch name pattern**: `feature/*`
 
 - ❌ No branch protection rules required
-- Feature branches are created from `develop` and merged back via pull requests
-- Protection is enforced through the target branch (`develop`) rules
+- Feature branches are created from `development` and merged back via pull requests
+- Protection is enforced through the target branch (`development`) rules
 
 ### Release Branches
 
 **Branch name pattern**: `release/*`
 
-- ⚠️ Optional: Apply similar rules to `develop` branch
+- ⚠️ Optional: Apply similar rules to `development` branch
 - Typically requires 1 approval before merging to `main`
 
 ### Hotfix Branches
@@ -113,7 +113,7 @@ GenAssist uses the **GitFlow** branching strategy with the following branch type
 1. Navigate to your repository on GitHub
 2. Go to **Settings** → **Branches**
 3. Click **Add rule** or **Add branch protection rule**
-4. Enter the branch name pattern (e.g., `main`, `develop`)
+4. Enter the branch name pattern (e.g., `main`, `development`)
 5. Configure the settings as outlined above
 6. Click **Create** or **Save changes**
 

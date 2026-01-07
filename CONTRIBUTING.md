@@ -55,9 +55,9 @@ GenAssist uses the **GitFlow** branching strategy. Understanding this workflow i
 ### Branch Types
 
 - **`main`** - Production-ready code. Always stable and deployable.
-- **`develop`** - Integration branch for features. All feature branches merge here first.
-- **`feature/*`** - New features and enhancements. Created from `develop`.
-- **`release/*`** - Release preparation branches. Created from `develop` when preparing a release.
+- **`development`** - Integration branch for features. All feature branches merge here first.
+- **`feature/*`** - New features and enhancements. Created from `development`.
+- **`release/*`** - Release preparation branches. Created from `development` when preparing a release.
 - **`hotfix/*`** - Critical production fixes. Created from `main`.
 
 ### Workflow Diagram
@@ -67,7 +67,7 @@ main ─────────────────────────
   │
   └── hotfix/* ──────────────────────────── (critical fixes)
   │
-develop ──────────────────────────────────── (integration)
+development ──────────────────────────────────── (integration)
   │
   ├── feature/* ─────────────────────────── (new features)
   │
@@ -92,23 +92,23 @@ Use descriptive, lowercase branch names with hyphens:
 ### Step 1: Create a Feature Branch
 
 ```bash
-# Ensure you're on develop and up to date
-git checkout develop
-git pull upstream develop
+# Ensure you're on development and up to date
+git checkout development
+git pull upstream development
 
 # Create and switch to your feature branch
 git checkout -b feature/your-feature-name
 ```
 
-### Step 2: Develop Your Feature
+### Step 2: development Your Feature
 
 - Write clean, maintainable code following our [Code Standards](#code-standards)
-- Write tests as you develop (see [Testing Requirements](#testing-requirements))
+- Write tests as you development (see [Testing Requirements](#testing-requirements))
 - Commit frequently with clear messages (see [Commit Message Guidelines](#commit-message-guidelines))
-- Keep your branch up to date with `develop`:
+- Keep your branch up to date with `development`:
   ```bash
   git fetch upstream
-  git rebase upstream/develop
+  git rebase upstream/development
   ```
 
 ### Step 3: Test Your Changes
@@ -129,7 +129,7 @@ Before submitting a PR, ensure:
    ```
 
 2. Create a Pull Request on GitHub:
-   - Target branch: `develop` (for features) or `main` (for hotfixes)
+   - Target branch: `development` (for features) or `main` (for hotfixes)
    - Use the appropriate PR template (feature, bugfix, core, or improvement)
    - Fill out all required sections
    - Link related issues
@@ -147,8 +147,8 @@ Before submitting a PR, ensure:
 
 Once approved:
 - A maintainer will merge your PR
-- Your feature will be integrated into `develop`
-- For releases, `develop` is merged into `main` via a release branch
+- Your feature will be integrated into `development`
+- For releases, `development` is merged into `main` via a release branch
 
 ## Code Standards
 
@@ -315,9 +315,9 @@ configuration details.
 ### PR Requirements
 
 1. **Target Branch**: 
-   - Features → `develop`
+   - Features → `development`
    - Hotfixes → `main`
-   - Core changes → `develop` (may require special review)
+   - Core changes → `development` (may require special review)
 
 2. **PR Template**: Use the appropriate template:
    - `feature.md` - For new features
